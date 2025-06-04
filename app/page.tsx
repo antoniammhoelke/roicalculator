@@ -79,7 +79,7 @@ export default function Page() {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-10 text-left">
-          <h1 className="text-4xl font-bold text-slate-900 mb-3">Estimate your potential ROI</h1>
+          <h1 className="text-4xl font-bold text-slate-900 mb-3">Your personal Funnel ROI calculator</h1>
           <p className="text-slate-600 text-lg">
             This calculator helps you get an idea of what your savings could be.
             For a detailed quote, please book a demo or talk to sales.
