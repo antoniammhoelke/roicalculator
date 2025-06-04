@@ -75,12 +75,12 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#013f33] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-10 text-left">
-          <h1 className="text-4xl font-bold text-slate-900 mb-3">Your personal Funnel ROI calculator</h1>
-          <p className="text-slate-600 text-lg">
+          <h1 className="text-4xl font-bold text-white mb-3">Your personal Funnel ROI calculator</h1>
+          <p className="text-gray-200 text-lg">
             This calculator helps you get an idea of what your savings could be.
             For a detailed quote, please book a demo or talk to sales.
           </p>
@@ -92,10 +92,10 @@ export default function Page() {
             {/* Number of Accounts (Data Sources) */}
             <div className="space-y-3">
               <div>
-                <Label className="text-base font-semibold text-slate-800 block mb-1">
+                <Label className="text-base font-semibold text-gray-100 block mb-1">
                   Number of data sources
                 </Label>
-                <p className="text-sm text-slate-600">
+                <p className="text-gray-300">
                   Total number of data sources you want to connect (e.g., databases, APIs, files)
                 </p>
               </div>
@@ -104,7 +104,7 @@ export default function Page() {
                   variant="outline"
                   size="icon"
                   onClick={() => setDataSources([Math.max(1, dataSources[0] - 1)])}
-                  className="border-slate-300"
+                  className="border-gray-300 text-white hover:bg-gray-700"
                 >
                   -
                 </Button>
@@ -112,29 +112,27 @@ export default function Page() {
                   type="number"
                   value={dataSources[0]}
                   onChange={(e) => setDataSources([Math.max(1, Number.parseInt(e.target.value) || 1)])}
-                  className="w-20 text-center border-slate-300"
+                  className="w-20 text-center bg-gray-700 border-gray-600 text-white"
                   min={1}
                 />
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={() => setDataSources([dataSources[0] + 1])}
-                  className="border-slate-300"
+                  className="border-gray-300 text-white hover:bg-gray-700"
                 >
                   +
                 </Button>
               </div>
-              {/* Optional: Slider for data sources if preferred, styled cleanly */}
-              {/* <Slider value={dataSources} onValueChange={setDataSources} max={50} min={1} step={1} /> */}
             </div>
 
             {/* Hours per week */}
             <div className="space-y-3">
               <div>
-                <Label className="text-base font-semibold text-slate-800 block mb-1">
+                <Label className="text-base font-semibold text-gray-100 block mb-1">
                   Hours per week spent managing data
                 </Label>
-                <p className="text-sm text-slate-600">
+                <p className="text-gray-300">
                   Include time for integration, cleaning, and troubleshooting.
                 </p>
               </div>
@@ -151,7 +149,7 @@ export default function Page() {
                   type="number"
                   value={hoursPerWeek[0]}
                   onChange={(e) => setHoursPerWeek([Number.parseInt(e.target.value) || 1])}
-                  className="w-24 text-center border-slate-300"
+                  className="w-24 text-center bg-gray-700 border-gray-600 text-white"
                   min={1}
                   max={80}
                 />
@@ -161,10 +159,10 @@ export default function Page() {
             {/* Hourly cost */}
             <div className="space-y-3">
               <div>
-                <Label className="text-base font-semibold text-slate-800 block mb-1">
+                <Label className="text-base font-semibold text-gray-100 block mb-1">
                   Estimated hourly cost (€/hour)
                 </Label>
-                <p className="text-sm text-slate-600">
+                <p className="text-gray-300">
                   Average fully-loaded cost (salary, benefits, overhead).
                 </p>
               </div>
@@ -181,44 +179,43 @@ export default function Page() {
                   type="number"
                   value={hourlyCost[0]}
                   onChange={(e) => setHourlyCost([Number.parseInt(e.target.value) || 20])}
-                  className="w-24 text-center border-slate-300"
+                  className="w-24 text-center bg-gray-700 border-gray-600 text-white"
                   min={20}
                   max={200}
                 />
               </div>
             </div>
             
-            {/* Additional Requirements Section (emulating the screenshot's style for the switch) */}
+            {/* Additional Requirements Section */}
             <div className="space-y-3">
-                <Label className="text-base font-semibold text-slate-800 block mb-1">
+                <Label className="text-base font-semibold text-gray-100 block mb-1">
                   Additional tools & costs
                 </Label>
-                <div className="bg-white p-4 rounded-md border border-slate-200">
+                <div className="bg-gray-800/50 p-4 rounded-md border border-gray-700">
                     <div className="flex items-center space-x-3 mb-1">
                         <Switch 
                             id="data-tool-switch" 
                             checked={usingDataTool} 
                             onCheckedChange={setUsingDataTool}
                         />
-                        <Label htmlFor="data-tool-switch" className="text-sm font-medium text-slate-700">
+                        <Label htmlFor="data-tool-switch" className="text-sm font-medium text-gray-200">
                             Are you using another data tool?
                         </Label>
                     </div>
-                    <p className="text-xs text-slate-500 pl-9"> {/* Align with switch text */}
+                    <p className="text-gray-400 pl-9">
                         Include costs for existing data integration or management platforms.
                     </p>
                 </div>
             </div>
 
-
             {/* Monthly tool cost - conditional */}
             {usingDataTool && (
-              <div className="space-y-3 pl-4 border-l-2 border-sky-200 ml-1"> {/* Emulate blue highlight from screenshot */}
+              <div className="space-y-3 pl-4 border-l-2 border-[#f86c54ff]/30 ml-1">
                 <div>
-                  <Label className="text-base font-semibold text-slate-800 block mb-1">
+                  <Label className="text-base font-semibold text-gray-100 block mb-1">
                     Current monthly tool cost (€)
                   </Label>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-gray-300">
                     Total monthly cost for your current data management solution.
                   </p>
                 </div>
@@ -235,7 +232,7 @@ export default function Page() {
                     type="number"
                     value={monthlyToolCost[0]}
                     onChange={(e) => setMonthlyToolCost([Number.parseInt(e.target.value) || 50])}
-                    className="w-24 text-center border-slate-300"
+                    className="w-24 text-center bg-gray-700 border-gray-600 text-white"
                     min={50}
                     max={5000}
                   />
@@ -244,50 +241,50 @@ export default function Page() {
             )}
           </div>
 
-          {/* Results Section - 1 column, styled like the screenshot's right panel */}
+          {/* Results Section - 1 column */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-10 bg-slate-100 border-slate-200 shadow-md">
+            <Card className="sticky top-10 bg-gray-800/50 border-gray-700 shadow-xl">
               <CardContent className="p-6">
                 <div className="space-y-6">
                   <div>
-                    <h2 className="text-xl font-semibold text-slate-900 mb-1">Your Estimated Savings</h2>
-                    <p className="text-sm text-slate-600">Based on your inputs, here's a potential outlook:</p>
+                    <h2 className="text-xl font-semibold text-white mb-1">Your Estimated Savings</h2>
+                    <p className="text-gray-300">Based on your inputs, here's a potential outlook:</p>
                   </div>
 
-                  <Separator className="bg-slate-300" />
+                  <Separator className="bg-gray-600" />
 
                   <div className="space-y-5">
                     <div>
-                      <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Annual Savings</p>
-                      <p className="text-4xl font-bold text-slate-800">{formatCurrency(results.annualSavings)}</p>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Annual Savings</p>
+                      <p className="text-4xl font-bold text-white">{formatCurrency(results.annualSavings)}</p>
                     </div>
 
                     <div>
-                      <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">3-Year Savings</p>
-                      <p className="text-2xl font-semibold text-slate-700">{formatCurrency(results.threeYearSavings)}</p>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">3-Year Savings</p>
+                      <p className="text-2xl font-semibold text-gray-200">{formatCurrency(results.threeYearSavings)}</p>
                     </div>
 
                     <div>
-                      <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">5-Year Savings</p>
-                      <p className="text-2xl font-semibold text-slate-700">{formatCurrency(results.fiveYearSavings)}</p>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">5-Year Savings</p>
+                      <p className="text-2xl font-semibold text-gray-200">{formatCurrency(results.fiveYearSavings)}</p>
                     </div>
                     
                     {/* ROI Display */}
-                    <div className="bg-white p-4 rounded-lg border border-slate-200">
-                        <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Estimated ROI</p>
-                        <p className="text-4xl font-bold text-sky-600">{results.roi}%</p>
-                        <p className="text-xs text-slate-500 mt-1">Calculated with an assumed solution investment.</p>
+                    <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                        <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Estimated ROI</p>
+                        <p className="text-4xl font-bold text-[#f86c54ff]">{results.roi}%</p>
+                        <p className="text-xs text-gray-400 mt-1">Calculated with an assumed solution investment.</p>
                     </div>
                   </div>
                   
-                  <Separator className="bg-slate-300" />
+                  <Separator className="bg-gray-600" />
 
-                  <p className="text-xs text-slate-500 text-center">
+                  <p className="text-xs text-gray-400 text-center">
                     This is an estimation. Your actual ROI may vary. Please book a demo for a detailed quote.
                   </p>
 
-                  <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white py-3 text-base font-semibold">
-                    Book a demo to learn more
+                  <Button className="w-full bg-[#f86c54ff] hover:bg-[#f86c54ff]/90 text-white py-3 text-base font-semibold">
+                    Talk to sales here
                   </Button>
                 </div>
               </CardContent>
